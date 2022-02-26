@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   class Car {
+       constructor(name, year) {
+           this.name = name;
+           this.year = year;
+       }
+       ageCar(){
+           let date = new Date();
+           return date.getFullYear() - this.year;
+       }
+   }
+   let ford = new Car('Ford', 2014)
+   let audi = new Car('Audi', 2000)
+   console.log('Tuổi của xe ford : ', ford.ageCar())
+   console.log('Tuổi của xe Audi : ', audi.ageCar())
+   //TÍNH ĐA HÌNH (POLYMORPHISM) Cùng 1 phương thức hay là tính tăng giống nhau nhưng thể hiện lại khác nhau hay nói cách khác kết quả khác nhau
+   class Animal {
+       constructor(name, weight, say) {
+           this.name = name;
+           this.weight = weight;
+           this.say = say;
+       }
+       //GETTER vs SETTER
+       setName(name){ //set thông tin vào không có return (Hàm không trả về)
+           this.name = name;
+       }
+       getName(){ //get để lấy thông tin ra và có return (Hàm có trả về)
+           return this.name;
+       }
+       setWeight(weight){
+           this.weight = weight;
+       }
+       getWeight(){
+           return this.weight;
+       }
+       setSay(say){
+           this.say = say;
+       }
+       getSay(){
+           return this.say;
+       }
+   }
+   //TÍNH KẾ THỪA TRONG OOP (Inheritance): Lớp con sẽ thừa hưởng phương thức đặc tính của lớp cha mà không cần phải triển khai lại
+   //từ khóa: extends
+   class Cat extends Animal{
+       constructor(name, weight, say, eat) {
+           super(name, weight, say);
+           this.eat = eat;
+       }
+       // setEat(eat){
+       //     this.eat = eat;
+       // }
+       // getEat(){
+       //     return this.eat;
+       // }
+   }
+   let cat1 = new Cat('TOM',20,'MEO MEO','thích ăn thịt chuột')
+   // cat1.setName('DOREMON')
+   // cat1.setEat('SỢ CHUỘT VÃI ĐÁI')
+   console.log('NAME cat1 ----->  ', cat1)
+   class Mouse extends Animal{
+       constructor(name, weight, say) {
+           super(name, weight, say);
+       }
+   }
+   let mouse1 = new Mouse('Jerry', 10, 'CHIT CHIT');
+   console.log('mouse 1', mouse1)
+</script>
